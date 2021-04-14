@@ -38,4 +38,12 @@ public class Dices {
         }
         return s;
     }
+    
+    public String getDices(){
+        String s = "";
+        for (int d: dices){
+            s += "[" + d + "] ";
+        }
+        return s + getSumm();
+    }
 }
