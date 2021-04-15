@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.game;
 
 /**
  * Объект Game (Игра)
  * обеспечивает основную логику игры
- * @author Dell
  */
 public class Game {
     public Player[] players;
@@ -17,6 +11,8 @@ public class Game {
     // вспомогательная переменная, хранящая игрока-победителя 
     // после очередеого хода
     private int winner;
+    //вспомогательная переменная, хранящая номер игрока, который делает ход
+    //первым
     private int firstRoller;
        
     public Game (int dicesNumber, String ... names){
@@ -27,6 +23,10 @@ public class Game {
         }
     }
     
+    /**
+     * метод описывающий структуру одетльного броска для конкретного игрока и 
+     * определяющий является ли на данный момент его резултат лучшим
+     */
     private void move(int playerNum){
         System.out.println("    играет " + players[playerNum].name);
         dices.roll();
@@ -37,6 +37,10 @@ public class Game {
         }
     }
     
+    /**
+     * метод, который обнуляет значений последнего броска игроков перед каждым 
+     * ходом
+     */
     private void initRound() {
         winner = 0;
         for (int i = 0; i < players.length; i++) {
@@ -44,6 +48,10 @@ public class Game {
         }
     }
     
+    /**
+     * метод, который определяет победителя в отдельно взятом круге, выводит
+     * имя победителя на экран и определяет кто ходит в следующем круге первым
+     */
     private void round(){
         System.out.println("  Круг");
         initRound();
@@ -66,6 +74,9 @@ public class Game {
         firstRoller = winner;
     }
     
+    /**
+     * метод, определяющий победителя всей игры и выводящий его имя на экран
+     */
     public void play(){
         System.out.println("Игра в кости");
         do {
